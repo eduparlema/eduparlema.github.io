@@ -215,10 +215,13 @@ background-size: cover;
 
 
 
-<p># Link To Code</p>
+<section id="link-to-code" class="level1">
+<h1>Link To Code</h1>
 <p><a href="https://github.com/eduparlema/eduparlema.github.io/blob/main/posts/perceptron%20/perceptron.py" class="uri">https://github.com/eduparlema/eduparlema.github.io/blob/main/posts/perceptron%20/perceptron.py</a></p>
-<p># Walk-through of the Perception Update</p>
-<div class="cell" data-execution_count="51">
+</section>
+<section id="walk-through-of-the-perception-update" class="level1">
+<h1>Walk-through of the Perception Update</h1>
+<div class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit(<span class="va">self</span>, X, y, max_steps):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="co">"Fits weights to data until it has reached 'max_steps' iterations or the accuracy equals 1"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      X_ <span class="op">=</span> np.append(X, np.ones((X.shape[<span class="dv">0</span>], <span class="dv">1</span>)), <span class="dv">1</span>)</span>
@@ -236,7 +239,7 @@ background-size: cover;
 </div>
 <p>We first modify <span class="math inline">\(X\)</span> so it has an additional column of 1’s. Then, we initialize the our weights randomly, store the initial accuracy value in the history array, and transform the label value from <span class="math inline">\([0,1]\)</span> to <span class="math inline">\([-1,1]\)</span>. Finally, in each iteration of the for loop, we choose a random index and update the weights with the following equation from class and update the history array with the current accuracy value. Also, if at some point the accuracy is equal to 1, we simply stop the algorithm.</p>
 <p># Experiments</p>
-<div class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>reload_ext autoreload </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -259,7 +262,7 @@ background-size: cover;
 <section id="experiment-1" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-1">Experiment 1</h2>
 <p>In this experiment we use 2d data to show that our perceptron algorithm converges to a weight vector <span class="math inline">\(\tilde{w}\)</span> describing a separating line as shown below.</p>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p_features <span class="op">=</span> <span class="dv">3</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -287,17 +290,17 @@ background-size: cover;
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="experiment-2" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-2">Experiment 2</h2>
 <p>In this experiment we also use 2d data, but <strong>not</strong> linearly separable, so that the perceptron algorithm will not converge to a weight vector <span class="math inline">\(\tilde{w}\)</span> that describes a separating line. It is possible to see that in the accuracy graph, the perceptron algorihtm never reaches a perfect accuracy</p>
-<div class="cell" data-execution_count="54">
+<div class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p_features <span class="op">=</span> <span class="dv">3</span> </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -325,17 +328,17 @@ background-size: cover;
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="experiment-3" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-3">Experiment 3</h2>
 <p>In this experiment we try to apply the perceptron algorithm in more than 2 dimensions. Here we try 5 features:</p>
-<div class="cell" data-execution_count="55">
+<div class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p_features <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -352,10 +355,11 @@ background-size: cover;
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>Based on the graph above, it does not seem that the data is linearly separable, as the accuracy does not seem to improve with the number of iterations making it unlikely that it will converge.</p>
+</section>
 </section>
 <section id="writing" class="level1">
 <h1>Writing</h1>

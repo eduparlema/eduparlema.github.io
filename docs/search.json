@@ -4,7 +4,7 @@
     "href": "posts/perceptron /index.html",
     "title": "The Perceptron",
     "section": "",
-    "text": "# Link To Code\nhttps://github.com/eduparlema/eduparlema.github.io/blob/main/posts/perceptron%20/perceptron.py\n# Walk-through of the Perception Update\nWe first modify \\(X\\) so it has an additional column of 1’s. Then, we initialize the our weights randomly, store the initial accuracy value in the history array, and transform the label value from \\([0,1]\\) to \\([-1,1]\\). Finally, in each iteration of the for loop, we choose a random index and update the weights with the following equation from class and update the history array with the current accuracy value. Also, if at some point the accuracy is equal to 1, we simply stop the algorithm.\n# Experiments"
+    "text": "https://github.com/eduparlema/eduparlema.github.io/blob/main/posts/perceptron%20/perceptron.py"
   },
   {
     "objectID": "posts/perceptron /index.html#experiment-1",
