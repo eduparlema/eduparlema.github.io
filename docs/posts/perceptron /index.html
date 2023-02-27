@@ -218,26 +218,25 @@ background-size: cover;
 <p># Link To Code</p>
 <p>(link)</p>
 <p># Walk-through of the Perception Update</p>
-<div class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> fit(<span class="va">self</span>, X, y, max_steps):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">"Fits weights to data until it has reached 'max_steps' iterations or the accuracy equals 1"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        X_ <span class="op">=</span> np.append(X, np.ones((X.shape[<span class="dv">0</span>], <span class="dv">1</span>)), <span class="dv">1</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.w <span class="op">=</span> np.random.random(X.shape[<span class="dv">1</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.history <span class="op">=</span> [<span class="va">self</span>.score(X_, y)]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        y_ <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>y <span class="op">-</span> <span class="dv">1</span></span>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit(<span class="va">self</span>, X, y, max_steps):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="co">"Fits weights to data until it has reached 'max_steps' iterations or the accuracy equals 1"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      X_ <span class="op">=</span> np.append(X, np.ones((X.shape[<span class="dv">0</span>], <span class="dv">1</span>)), <span class="dv">1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.w <span class="op">=</span> np.random.random(X.shape[<span class="dv">1</span>] <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="va">self</span>.history <span class="op">=</span> [<span class="va">self</span>.score(X_, y)]</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>      y_ <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>y <span class="op">-</span> <span class="dv">1</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_steps):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>            i <span class="op">=</span> np.random.randint(X.shape[<span class="dv">0</span>])</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.w <span class="op">+=</span> (y_[i] <span class="op">*</span> (np.dot(X_[i], <span class="va">self</span>.w)) <span class="op">&lt;</span> <span class="dv">0</span>) <span class="op">*</span> y_[i]<span class="op">*</span>X_[i]</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.history.append(<span class="va">self</span>.score(X_, y))</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>                <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(max_steps):</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>          i <span class="op">=</span> np.random.randint(X.shape[<span class="dv">0</span>])</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>          <span class="va">self</span>.w <span class="op">+=</span> (y_[i] <span class="op">*</span> (np.dot(X_[i], <span class="va">self</span>.w)) <span class="op">&lt;</span> <span class="dv">0</span>) <span class="op">*</span> y_[i]<span class="op">*</span>X_[i]</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>          <span class="va">self</span>.history.append(<span class="va">self</span>.score(X_, y))</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> <span class="va">self</span>.history[<span class="op">-</span><span class="dv">1</span>] <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>              <span class="cf">break</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>We first modify <span class="math inline">\(X\)</span> so it has an additional column of 1’s. This help us because if we also define <span class="math inline">\(\textbf{} = (\textbf{w}, -b)\)</span>, then our classification rule simplifies to <span class="math inline">\(\mathbbm{1}(\langle \textbf{\tilde{w}, \tilde{x_i} \rangle \geq 0)\)</span>.</p>
-<p>Then, we initialize the our weights randomly, store the initial accuracy value in the history array, and transform the label value from <span class="math inline">\([0,1]\)</span> to <span class="math inline">\([-1,1]\)</span>. Finally, in each iteration of the for loop, we choose a random index and update the weights with the following equation from class and update the history array with the current accuracy value. Also, if at some point the accuracy is equal to 1, we simply stop the algorithm.</p>
+<p>We first modify <span class="math inline">\(X\)</span> so it has an additional column of 1’s. Then, we initialize the our weights randomly, store the initial accuracy value in the history array, and transform the label value from <span class="math inline">\([0,1]\)</span> to <span class="math inline">\([-1,1]\)</span>. Finally, in each iteration of the for loop, we choose a random index and update the weights with the following equation from class and update the history array with the current accuracy value. Also, if at some point the accuracy is equal to 1, we simply stop the algorithm.</p>
 <p># Experiments</p>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>reload_ext autoreload </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>autoreload <span class="dv">2</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -260,7 +259,7 @@ background-size: cover;
 <section id="experiment-1" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-1">Experiment 1</h2>
 <p>In this experiment we use 2d data to show that our perceptron algorithm converges to a weight vector <span class="math inline">\(\tilde{w}\)</span> describing a separating line as shown below.</p>
-<div class="cell" data-execution_count="63">
+<div class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span> </span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p_features <span class="op">=</span> <span class="dv">3</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -288,17 +287,17 @@ background-size: cover;
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-4-output-2.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="experiment-2" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-2">Experiment 2</h2>
 <p>In this experiment we also use 2d data, but <strong>not</strong> linearly separable, so that the perceptron algorithm will not converge to a weight vector <span class="math inline">\(\tilde{w}\)</span> that describes a separating line. It is possible to see that in the accuracy graph, the perceptron algorihtm never reaches a perfect accuracy</p>
-<div class="cell" data-execution_count="64">
+<div class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>p_features <span class="op">=</span> <span class="dv">3</span> </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -326,17 +325,17 @@ background-size: cover;
 <span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-5-output-2.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="experiment-3" class="level2">
 <h2 class="anchored" data-anchor-id="experiment-3">Experiment 3</h2>
 <p>In this experiment we try to apply the perceptron algorithm in more than 2 dimensions. Here we try 5 features:</p>
-<div class="cell" data-execution_count="65">
+<div class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">100</span> </span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>p_features <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -351,11 +350,9 @@ background-size: cover;
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>ylab <span class="op">=</span> plt.ylabel(<span class="st">"Accuracy"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Accuracy over iterations"</span>)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(p.history[<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="index_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="index_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0.53</code></pre>
@@ -366,7 +363,7 @@ background-size: cover;
 <section id="writing" class="level1">
 <h1>Writing</h1>
 <p><strong>What is the runtime complexity of a single iteration of the perceptron algorithm update?</strong></p>
-<p>First, choosing a random index takes constant time. Updating the weights involves a dot product between a row vector and the current weigths, and since both have length <span class="math inline">\(p+1\)</span> this takes <span class="math inline">\(/bigO(p)\)</span> time. Next, we call the <em>score()</em> function. This function first calls <em>predict()</em> which takes <span class="math inline">\(\bigO(np)\)</span> time as it involves matrix multiplication between a <span class="math inline">\(n \cross p\)</span> matrix and a <span class="math inline">\(p \cross 1\)</span> vector. Finally, the <em>score()</em> function iterates over it’s input, which is a vector of lenght <span class="math inline">\(n\)</span>, so overall this function takes <span class="math inline">\(\bigO(np + n) = \bigO(np)\)</span> time. Hence, a single iteration of the perceptron algorithm update has a time complexity of <span class="math display">\[\bigO(p) + \bigO(np) = \bigO(np)\]</span></p>
+<p>First, choosing a random index takes constant time. Updating the weights involves a dot product between a row vector and the current weigths, and since both have length <span class="math inline">\(p+1\)</span> this takes <span class="math inline">\(O(p)\)</span> time. Next, we call the <em>score()</em> function. This function first calls <em>predict()</em> which takes <span class="math inline">\(O(np)\)</span> time as it involves matrix multiplication between a <span class="math inline">\(n \times p\)</span> matrix and a <span class="math inline">\(p \times 1\)</span> vector. Finally, the <em>score()</em> function iterates over it’s input, which is a vector of lenght <span class="math inline">\(n\)</span>, so overall this function takes <span class="math inline">\(O(np + n) = O(np)\)</span> time. Hence, a single iteration of the perceptron algorithm update has a time complexity of <span class="math display">\[O(p) + O(np) = O(np)\]</span></p>
 
 
 </section>
