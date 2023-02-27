@@ -2,28 +2,28 @@
   {
     "objectID": "posts/perceptron /index.html",
     "href": "posts/perceptron /index.html",
-    "title": "My Awesome CSCI 0451 Blog",
+    "title": "The Perceptron",
     "section": "",
-    "text": "ti\ntl\ne: The Perceptron\n\n\nau\nth\nor: Eduardo Pareja Lema\n\n\nda\nte\n: ‘2023-02-23’\n\n\nim\nag\ne: “perceptron.png”\n\n\nde\nsc\nription: “A blog post on the perceptron algorithm”\n\n\nfo\nrm\nat: html\n# Link To Code\n(link)\n# Walk-through of the Perception Update\nWe first modify \\(X\\) so it has an additional column of 1’s. This help us because if we also define \\(\\textbf{\\tilde{w}} = (\\textbf{w}, -b)\\), then our classification rule simplifies to \\(\\mathbbm{1}(\\langle \\textbf{\\tilde{w}, \\tilde{x_i} \\rangle \\geq 0)\\).\nThen, we initialize the our weights randomly, store the initial accuracy value in the history array, and transform the label value from \\([0,1]\\) to \\([-1,1]\\). Finally, in each iteration of the for loop, we choose a random index and update the weights with the following equation from class and update the history array with the current accuracy value. Also, if at some point the accuracy is equal to 1, we simply stop the algorithm.\n# Experiments"
+    "text": "# Link To Code\n(link)\n# Walk-through of the Perception Update\nWe first modify \\(X\\) so it has an additional column of 1’s. This help us because if we also define \\(\\textbf{} = (\\textbf{w}, -b)\\), then our classification rule simplifies to \\(\\mathbbm{1}(\\langle \\textbf{\\tilde{w}, \\tilde{x_i} \\rangle \\geq 0)\\).\nThen, we initialize the our weights randomly, store the initial accuracy value in the history array, and transform the label value from \\([0,1]\\) to \\([-1,1]\\). Finally, in each iteration of the for loop, we choose a random index and update the weights with the following equation from class and update the history array with the current accuracy value. Also, if at some point the accuracy is equal to 1, we simply stop the algorithm.\n# Experiments"
   },
   {
     "objectID": "posts/perceptron /index.html#experiment-1",
     "href": "posts/perceptron /index.html#experiment-1",
-    "title": "My Awesome CSCI 0451 Blog",
+    "title": "The Perceptron",
     "section": "Experiment 1",
     "text": "Experiment 1\nIn this experiment we use 2d data to show that our perceptron algorithm converges to a weight vector \\(\\tilde{w}\\) describing a separating line as shown below.\n\nn = 100 \np_features = 3 \n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers = [(-1.7, -1.7), (1.7, 1.7)])\n\np = Perceptron() \np.fit(X, y, max_steps = 1000)\n\n\ndata_fig = plt.scatter(X[:,0], X[:,1], c = y)\ndata_fig = draw_line(p.w, -2, 2)\n\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\nplt.title(\"Data with Separating Line\")\n\nplt.show()\n\naccuracy_fig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\n\nplt.title(\"Accuracy over Training\")\n\nplt.show()"
   },
   {
     "objectID": "posts/perceptron /index.html#experiment-2",
     "href": "posts/perceptron /index.html#experiment-2",
-    "title": "My Awesome CSCI 0451 Blog",
+    "title": "The Perceptron",
     "section": "Experiment 2",
     "text": "Experiment 2\nIn this experiment we also use 2d data, but not linearly separable, so that the perceptron algorithm will not converge to a weight vector \\(\\tilde{w}\\) that describes a separating line. It is possible to see that in the accuracy graph, the perceptron algorihtm never reaches a perfect accuracy\n\nn = 100 \np_features = 3 \n\nX, y = make_blobs(n_samples = 100, n_features = p_features - 1, centers = [(0, 0), (0, 0)])\n\np = Perceptron() \np.fit(X, y, max_steps = 1000)\n\n\ndata_fig = plt.scatter(X[:,0], X[:,1], c = y)\ndata_fig = draw_line(p.w, -2, 2)\n\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\nplt.title(\"Data with Separating Line\")\n\nplt.show()\n\naccuracy_fig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\n\nplt.title(\"Accuracy over Training\")\n\nplt.show()"
   },
   {
     "objectID": "posts/perceptron /index.html#experiment-3",
     "href": "posts/perceptron /index.html#experiment-3",
-    "title": "My Awesome CSCI 0451 Blog",
+    "title": "The Perceptron",
     "section": "Experiment 3",
     "text": "Experiment 3\nIn this experiment we try to apply the perceptron algorithm in more than 2 dimensions. Here we try 5 features:\n\nn = 100 \np_features = 5\n\nX, y = make_blobs(n_samples = 100, n_features = p_features, centers = np.random.uniform(-1, 1, (2, p_features)))\n\n\np = Perceptron()\np.fit(X,y, max_steps = 1000)\n\naccuracy_fig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\nplt.title(\"Accuracy over iterations\")\n\nplt.show()\n\nprint(p.history[-1])\n\n\n\n\n0.53\n\n\nBased on the graph above, it does not seem that the data is linearly separable, as the accuracy does not seem to improve with the number of iterations making it unlikely that it will converge."
   },
@@ -46,7 +46,7 @@
     "href": "index.html",
     "title": "My Awesome CSCI 0451 Blog",
     "section": "",
-    "text": "An example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
+    "text": "A blog post on the perceptron algorithm\n\n\n\n\n\n\nFeb 23, 2023\n\n\nEduardo Pareja Lema\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
