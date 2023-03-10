@@ -28,6 +28,20 @@
     "text": "Experiment 3\nIn this experiment we try to apply the perceptron algorithm in more than 2 dimensions. Here we try 5 features:\n\nn = 100 \np_features = 5\n\nX, y = make_blobs(n_samples = 100, n_features = p_features, centers = np.random.uniform(-1, 1, (2, p_features)))\n\n\np = Perceptron()\np.fit(X,y, max_steps = 1000)\n\naccuracy_fig = plt.plot(p.history)\nxlab = plt.xlabel(\"Iteration\")\nylab = plt.ylabel(\"Accuracy\")\nplt.title(\"Accuracy over iterations\")\n\nplt.show()\n\n\n\n\nBased on the graph above, it does not seem that the data is linearly separable, as the accuracy does not seem to improve with the number of iterations making it unlikely that it will converge."
   },
   {
+    "objectID": "posts/logistic-regression/index.html",
+    "href": "posts/logistic-regression/index.html",
+    "title": "Optimization for Logistic Regression",
+    "section": "",
+    "text": "In this blog post, we implement simple gradient descent, stochastic gradient descent, and a momentum method. These are all helpful algorithms to optimize convex functions given that finding any local minimizer is equivalent to finding the global minimizer for these kind of functions. Then, we compare the performance of these three algorithms for training logistic regression."
+  },
+  {
+    "objectID": "posts/logistic-regression/index.html#experiment-1",
+    "href": "posts/logistic-regression/index.html#experiment-1",
+    "title": "Optimization for Logistic Regression",
+    "section": "Experiment 1",
+    "text": "Experiment 1\n\nfrom logisticRegression import LogisticRegression # your source code\nfrom sklearn.datasets import make_blobs\nfrom matplotlib import pyplot as plt\nimport numpy as np\n\nnp.seterr(all='ignore') \n\ndef draw_line(w, x_min, x_max):\n  x = np.linspace(x_min, x_max, 101)\n  y = -(w[0]*x + w[2])/w[1]\n  plt.plot(x, y, color = \"black\")\n\nIn this experiment we will explore how the outcome of the gradient descent changes depending on the value of the learning rate alpha.\n\np_features = 3\nX, y = make_blobs(n_samples = 200, n_features = p_features - 1, centers = [(-1, -1), (1, 1)])\n\nLR = LogisticRegression()\nLR.fit(X, y, alpha = 0.5, max_epochs=1000)\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nfig = draw_line(LR.w, -2, 2)\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\nprint(LR.score_history[-1])\n\n0.92\n\n\n\n\n\n\nfrom logisticRegression import LogisticRegression # your source code\nfrom sklearn.datasets import make_blobs\nfrom matplotlib import pyplot as plt\nimport numpy as np\n\nnp.seterr(all='ignore') \n\ndef draw_line(w, x_min, x_max):\n  x = np.linspace(x_min, x_max, 101)\n  y = -(w[0]*x + w[2])/w[1]\n  plt.plot(x, y, color = \"black\")\n\n# make the data\np_features = 3\nX, y = make_blobs(n_samples = 200, n_features = p_features - 1, centers = [(-1, -1), (1, 1)])\n\nLR = LogisticRegression()\nLR.fit(X, y, alpha = 0.01, max_epochs=1000)\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nfig = draw_line(LR.w, -2, 2)\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\n\nnum_steps = len(LR.loss_history)\n\naccuracy_fig = plt.plot(np.arange(num_steps) + 1, LR.loss_history, label = \"gradient\")\n\nplt.loglog()\n\nlegend = plt.legend() \n\n\n\n\n\n\n\n\n\nfrom logisticRegression import LogisticRegression # your source code\nfrom sklearn.datasets import make_blobs\nfrom matplotlib import pyplot as plt\nimport numpy as np\n\nnp.seterr(all='ignore') \n\ndef draw_line(w, x_min, x_max):\n  x = np.linspace(x_min, x_max, 101)\n  y = -(w[0]*x + w[2])/w[1]\n  plt.plot(x, y, color = \"black\")\n\n# make the data\np_features = 3\nX, y = make_blobs(n_samples = 200, n_features = p_features - 1, centers = [(-1, -1), (1, 1)])\n\nLR = LogisticRegression()\nLR.fit(X, y, alpha = 0.01, max_epochs=1000)\n\nfig = plt.scatter(X[:,0], X[:,1], c = y)\nfig = draw_line(LR.w, -2, 2)\nxlab = plt.xlabel(\"Feature 1\")\nylab = plt.ylabel(\"Feature 2\")\n\n\n\nLR = LogisticRegression()\nLR.fit_stochastic(X, y, \n                  max_epochs = 1000, \n                  momentum = True, \n                  batch_size = 5, \n                  alpha = 0.1) \n\nnum_steps = len(LR.loss_history)\nplt.plot(np.arange(num_steps) + 1, LR.loss_history, label = \"stochastic gradient (momentum)\")\n\nLR = LogisticRegression()\nLR.fit_stochastic(X, y, \n                  max_epochs = 1000, \n                  momentum = False, \n                  batch_size = 5, \n                  alpha = 0.1)\n\nnum_steps = len(LR.loss_history)\nplt.plot(np.arange(num_steps) + 1, LR.loss_history, label = \"stochastic gradient\")\n\nLR = LogisticRegression()\nLR.fit(X, y, alpha = 0.9, max_epochs = 1000)\n\nnum_steps = len(LR.loss_history)\nplt.plot(np.arange(num_steps) + 1, LR.loss_history, label = \"gradient\")\n\nplt.loglog()\n\nlegend = plt.legend()"
+  },
+  {
     "objectID": "posts/example-blog-post/index.html",
     "href": "posts/example-blog-post/index.html",
     "title": "Hello Blog",
@@ -46,7 +60,7 @@
     "href": "index.html",
     "title": "My Awesome CSCI 0451 Blog",
     "section": "",
-    "text": "A blog post on the perceptron algorithm\n\n\n\n\n\n\nFeb 23, 2023\n\n\nEduardo Pareja Lema\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
+    "text": "A blog post on the optimization for Logistic Regression based on the gradient of functions\n\n\n\n\n\n\nMar 9, 2023\n\n\nEduardo Pareja Lema\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nA blog post on the perceptron algorithm\n\n\n\n\n\n\nFeb 23, 2023\n\n\nEduardo Pareja Lema\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\nAn example blog post illustrating the key techniques you’ll need to demonstrate your learning in CSCI 0451.\n\n\n\n\n\n\nJan 10, 2023\n\n\nPhil Chodrow\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
