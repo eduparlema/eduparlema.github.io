@@ -66,7 +66,6 @@ class LogisticRegression:
         y_hat = X @ self.w
         return self.logistic_loss(y_hat, y).mean()
 
-
     def fit_stochastic(self, X, y, alpha=0.01, max_epochs=1000, batch_size=10, momentum = False):
         """
         Fits weights to data using stochastic gradient descent. There is not output value.
