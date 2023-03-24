@@ -28,8 +28,8 @@ class KernelLogisticRegression:
         self.X_train = X
         X_ = self.pad(X)
 
-        km = self.kernel(X_, X_, **self.kernel_kwargs)
         v0 = np.random.rand(X.shape[0])
+        km = self.kernel(X_, X_, **self.kernel_kwargs)
         
         def empirical_risk(X, y, v, loss):
             y_hat = X@v
