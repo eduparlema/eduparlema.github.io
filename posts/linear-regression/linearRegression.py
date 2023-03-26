@@ -23,16 +23,13 @@ class LinearRegression:
         q = X_.T @ y
 
         for _ in range(max_epochs):
-
             grad = P @ self.w  -  q 
             self.w -= alpha * grad 
 
             self.score_history.append(self.score(X, y))
-
             #Convergence
             if np.allclose(grad, np.zeros(len(grad))):
                 break
-
 
     def predict(self, X):
         X = self.pad(X)
