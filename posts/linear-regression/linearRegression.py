@@ -16,7 +16,7 @@ class LinearRegression:
 
     def fit_gradient(self, X, y, alpha = 0.0001, max_epochs = 100):
         X_ = self.pad(X)
-        self.w = .5 - np.random.rand(X_.shape[1])
+        self.w = np.random.rand(X_.shape[1])
         self.score_history = [ self.score(X, y) ]
 
         P = X_.T @ X_
