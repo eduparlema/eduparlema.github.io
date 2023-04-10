@@ -11,7 +11,7 @@
     "href": "posts/perceptron /index.html",
     "title": "The Perceptron",
     "section": "",
-    "text": "https://github.com/eduparlema/eduparlema.github.io/blob/main/posts/perceptron%20/perceptron.py"
+    "text": "The goal of this blog post is to implement the perceptron, a classic binary linear classifier algorithm. We implement such algorithm in Python, try some experiments and showcase its limitations with data that is not linearly separable. Moreover, at the end we perform a complexity analysis of this algorithm."
   },
   {
     "objectID": "posts/perceptron /index.html#experiment-1",
