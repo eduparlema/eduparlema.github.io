@@ -21,6 +21,7 @@ class LogisticRegression:
         
     def gradient(self, w, X, y):
         y_hat = X@w 
+        #np.mean((self.sigmoid(y_hat)-y)[:, np.newaxis] *X, axis=0)
         return np.dot(self.sigmoid(y_hat) - y, X) / X.shape[0]
 
     #- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
