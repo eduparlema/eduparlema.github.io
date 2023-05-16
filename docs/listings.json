@@ -2,9 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/posts/optimization-with-Adam/index.html",
       "/posts/project/index.html",
       "/posts/unsupervised-learning/index.html",
+      "/posts/optimization-with-Adam/index.html",
       "/posts/auditing-allocative-bias/index.html",
       "/posts/linear-regression/index.html",
       "/posts/kernel-logistic-regression/index.html",
